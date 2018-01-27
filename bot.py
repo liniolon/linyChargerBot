@@ -5,7 +5,7 @@ import sqlite3 as db
 import random
 
 
-token = '500572767:AAFy7YAizO6zJMNCUL8lsI0fNX-j2n2_Bn0'
+token = 'YOUR TOKEN'
 bot = telepot.Bot(token)
 
 def user_token():
@@ -22,7 +22,7 @@ def handle(msg):
     chatid = msg['chat']['id']
     username = msg['chat']['username']
 
-    invitedurl = "t.me/linychargerbot?start={}".format(chatid)
+    invitedurl = "t.me/YOURTELEGRAMBOT?start={}".format(chatid)
     peopleinvited = 0
 
 
@@ -49,7 +49,7 @@ def handle(msg):
         cur.execute("select chatid from users where chatid = {}".format(chatid))
         status = cur.fetchall()
         if len(status) > 0:
-            user = bot.getChatMember("@testcharger", chatid)
+            user = bot.getChatMember("@YOURCHANNELID", chatid)
             user_status = ['restricted', 'left', 'kicked']
             condition = True
 
@@ -58,7 +58,7 @@ def handle(msg):
                 if condition is True:
                     break
             if condition:
-                bot.sendMessage(chatid, "شما عضو کانال @testcharger نیستید\nبعد از اینکه در کانال ما عضو شدی دوباره دستور /link رو وارد کن")
+                bot.sendMessage(chatid, "شما عضو کانال @YOURCHANNELID نیستید\nبعد از اینکه در کانال ما عضو شدی دوباره دستور /link رو وارد کن")
             else:
                 bot.sendMessage(chatid, "لینک دعوت شما: {}".format(invitedurl))
                 if is_invite:
